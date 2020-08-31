@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class LifeCyclePage extends StatefulWidget {
+class ComponentLifeCyclePage extends StatefulWidget {
   @override
-  _LifeCyclePageState createState() => _LifeCyclePageState();
+  _ComponentLifeCyclePageState createState() => _ComponentLifeCyclePageState();
 }
 
-class _LifeCyclePageState extends State<LifeCyclePage> {
+class _ComponentLifeCyclePageState extends State<ComponentLifeCyclePage> {
   String componentTitle;
   InheritedTestModel model;
 

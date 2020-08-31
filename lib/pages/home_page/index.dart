@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
             title: Text('组件生命周期'),
             trailing: Icon(Icons.keyboard_arrow_right),
             onTap: () {
-              Routes.navigateTo(context, Routes.lifeCycle);
+              Routes.navigateTo(context, Routes.componentLifeCycle);
             },
           );
         },
