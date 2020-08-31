@@ -16,6 +16,7 @@ class _HomePageState extends State<HomePage> {
     list = [
       {'title': '组件生命周期', 'route': Routes.componentLifeCycle},
       {'title': 'App生命周期', 'route': Routes.appLifeCycle},
+      {'title': '路由生命周期', 'route': Routes.aPage},
     ];
   }
 

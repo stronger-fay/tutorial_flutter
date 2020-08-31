@@ -5,6 +5,8 @@ import '../pages/not_found_page/index.dart';
 import '../pages/home_page/index.dart';
 import '../pages/component_life_cycle_page/index.dart';
 import '../pages/app_life_cycle_page/index.dart';
+import '../pages/router_life_cycle_a_page/index.dart';
+import '../pages/router_life_cycle_b_page/index.dart';
 
 abstract class IRouterProvider {
   void initRouter(Router router);
@@ -18,6 +20,8 @@ class Routes {
   static String home = '/'; // 首页
   static String componentLifeCycle = '/componentLifeCycle'; // 生命周期
   static String appLifeCycle = '/appLifeCycle'; // 生命周期
+  static String aPage = '/aPage'; // 页面a
+  static String bPage = '/bPage'; // 页面a
 
   /// 初始化路由
   static void configureRoutes(Router r) {
@@ -31,6 +35,8 @@ class Routes {
     r.define(componentLifeCycle,
         handler: Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) => ComponentLifeCyclePage()));
     r.define(appLifeCycle, handler: Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) => AppLifeCyclePage()));
+    r.define(aPage, handler: Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) => RouterLifeCycleAPage()));
+    r.define(bPage, handler: Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) => RouterLifeCycleBPage()));
 
     _listRouter.clear();
 
