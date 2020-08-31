@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import '../pages/not_found_page/index.dart';
 import '../pages/home_page/index.dart';
 import '../pages/component_life_cycle_page/index.dart';
+import '../pages/app_life_cycle_page/index.dart';
 
 abstract class IRouterProvider {
   void initRouter(Router router);
@@ -16,6 +17,7 @@ class Routes {
 
   static String home = '/'; // 首页
   static String componentLifeCycle = '/componentLifeCycle'; // 生命周期
+  static String appLifeCycle = '/appLifeCycle'; // 生命周期
 
   /// 初始化路由
   static void configureRoutes(Router r) {
@@ -28,6 +30,7 @@ class Routes {
     r.define(home, handler: Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) => HomePage()));
     r.define(componentLifeCycle,
         handler: Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) => ComponentLifeCyclePage()));
+    r.define(appLifeCycle, handler: Handler(handlerFunc: (BuildContext context, Map<String, List<String>> params) => AppLifeCyclePage()));
 
     _listRouter.clear();
 

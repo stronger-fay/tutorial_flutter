@@ -7,6 +7,18 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List list = [];
+
+  @override
+  void initState() {
+    super.initState();
+
+    list = [
+      {'title': '组件生命周期', 'route': Routes.componentLifeCycle},
+      {'title': 'App生命周期', 'route': Routes.appLifeCycle},
+    ];
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,17 +31,15 @@ class _HomePageState extends State<HomePage> {
       body: ListView.separated(
         itemBuilder: (BuildContext context, int index) {
           return ListTile(
-            title: Text('组件生命周期'),
+            title: Text(list[index]['title']),
             trailing: Icon(Icons.keyboard_arrow_right),
-            onTap: () {
-              Routes.navigateTo(context, Routes.componentLifeCycle);
-            },
+            onTap: () => Routes.navigateTo(context, list[index]['route']),
           );
         },
         separatorBuilder: (BuildContext context, int index) {
           return Divider();
         },
-        itemCount: 1,
+        itemCount: list.length,
       ),
     );
   }
