@@ -1,13 +1,48 @@
 import 'package:flutter/material.dart';
 
+import '../../main.dart';
+
 class ComponentLifeCyclePage extends StatefulWidget {
   @override
   _ComponentLifeCyclePageState createState() => _ComponentLifeCyclePageState();
 }
 
-class _ComponentLifeCyclePageState extends State<ComponentLifeCyclePage> {
+class _ComponentLifeCyclePageState extends State<ComponentLifeCyclePage> with RouteAware {
   String componentTitle;
   InheritedTestModel model;
+
+  @override
+  void didChangeDependencies() {
+    routeObserver.subscribe(this, ModalRoute.of(context)); //订阅
+
+    super.didChangeDependencies();
+  }
+
+  @override
+  void didPush() {
+    // push到当前页面
+    debugPrint("------> A didPush");
+    super.didPush();
+  }
+
+  @override
+  void didPop() {
+    debugPrint("------> A didPop");
+    super.didPop();
+  }
+
+  @override
+  void didPopNext() {
+    debugPrint("------> A didPopNext");
+    // pop 到当前页面
+    super.didPopNext();
+  }
+
+  @override
+  void didPushNext() {
+    debugPrint("------> A didPushNext");
+    super.didPushNext();
+  }
 
   @override
   void initState() {
@@ -55,6 +90,13 @@ class _ComponentLifeCyclePageState extends State<ComponentLifeCyclePage> {
       ),
       body: inheritedContext,
     );
+  }
+
+  @override
+  void dispose() {
+    routeObserver.unsubscribe(this); //取消订阅
+
+    super.dispose();
   }
 }
 
