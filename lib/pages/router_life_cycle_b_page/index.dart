@@ -1,24 +1,53 @@
 import 'package:flutter/material.dart';
-import 'package:tutorial_flutter/routes/routers.dart';
+
+import '../../main.dart';
 
 class RouterLifeCycleBPage extends StatefulWidget {
   @override
   _RouterLifeCycleBPageState createState() => _RouterLifeCycleBPageState();
 }
 
-class _RouterLifeCycleBPageState extends State<RouterLifeCycleBPage> {
+class _RouterLifeCycleBPageState extends State<RouterLifeCycleBPage> with RouteAware {
   @override
-  void initState() {
-    super.initState();
-
-    print('b initState');
+  void didChangeDependencies() {
+    routeObserver.subscribe(this, ModalRoute.of(context)); //订阅
+    super.didChangeDependencies();
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
+  void didPush() {
+    debugPrint("------> B didPush");
+    super.didPush();
+  }
 
-    print('b didChangeDependencies');
+  @override
+  void didPop() {
+    debugPrint("------> B didPop");
+    super.didPop();
+  }
+
+  @override
+  void didPopNext() {
+    debugPrint("------> B didPopNext");
+    super.didPopNext();
+  }
+
+  @override
+  void didPushNext() {
+    debugPrint("------> B didPushNext");
+    super.didPushNext();
+  }
+
+  // app 进入后台，只触发当前路由内绑定的widget
+  @override
+  void onAppBackground() {
+    print('$this onAppBackground');
+  }
+
+  // app 进入前台，只触发当前路由内绑定的widget
+  @override
+  void onAppForeground() {
+    print('$this onAppForeground');
   }
 
   @override
@@ -30,42 +59,7 @@ class _RouterLifeCycleBPageState extends State<RouterLifeCycleBPage> {
         backgroundColor: Theme.of(context).primaryColor,
         elevation: 4.0,
       ),
-      body: Container(
-          // child: RaisedButton(
-          //   child: Text('push to B'),
-          //   onPressed: () {
-          //     // Routes.navigateTo(context, Routes.)
-          //   },
-          // ),
-          ),
+      body: Container(),
     );
-  }
-
-  @override
-  void didUpdateWidget(RouterLifeCycleBPage oldWidget) {
-    super.didUpdateWidget(oldWidget);
-
-    print('b didUpdateWidget oldWidget: $oldWidget');
-  }
-
-  @override
-  void deactivate() {
-    super.deactivate();
-
-    print('b deactivate');
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-
-    print('b dispose');
-  }
-
-  @override
-  void reassemble() {
-    super.reassemble();
-
-    print('b reassemble');
   }
 }

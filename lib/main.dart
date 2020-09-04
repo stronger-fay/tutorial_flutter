@@ -7,6 +7,8 @@ import 'package:tutorial_flutter/routes/routers.dart';
 
 // import './routes/routers.dart';
 
+final RouteObserver<PageRoute> routeObserver = RouteObserver();
+
 void main() {
   runApp(MyApp());
 }
@@ -24,9 +26,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: '画法几何',
+      title: 'Flutter',
 
       home: HomePage(),
+      // 页面生命周期
+      navigatorObservers: [
+        routeObserver, // route listener
+      ],
       //----------------主要代码start
       onGenerateRoute: Routes.router.generator, //路由静态化
       //----------------主要代码end
